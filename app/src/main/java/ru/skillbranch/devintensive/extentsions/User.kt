@@ -20,6 +20,4 @@ fun User.toUserView(): UserView{
 
 }
 
-private fun Date.humanizeDiff(): String {
-return ""
-}
+

@@ -3,11 +3,13 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.devintensive.extentsions.TimeUnits
+import ru.skillbranch.devintensive.extentsions.add
 import ru.skillbranch.devintensive.extentsions.dformat
-import ru.skillbranch.devintensive.models.BaseMessage
-import ru.skillbranch.devintensive.models.Chat
-import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.models.*
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -44,6 +46,32 @@ class ExampleUnitTest {
     @Test
     fun test_abstract_factory(){
         val user = User.makeUser("Danya Nosyk")
-    }
+        val textMsg= BaseMessage.makeMessgae(user,chat = Chat("0"),date = Date(),payload = "my text")
+        val imageMsg= BaseMessage.makeMessgae(user,chat = Chat("0"),date = Date(),type = "image",payload = "my text")
+        when(textMsg){
+            is ImageMessage -> println("its image")
+            is TextMessage -> println("its text")
+        }
 
+    }
+    @Test
+    fun date_test(){
+        val date = Date()
+        println(date.hours)
+        val date2 = date.add(-2, TimeUnits.HOUR)
+        println(date.hours)
+        println(date2.hours)
+
+    }
+    @Test
+    fun initials_test(){
+        val t1=Utils.toInitials("danya", "nosyk")
+        val t2=Utils.toInitials(null,"nosyk")
+        val t3=Utils.toInitials(null," ")
+        println(t1)
+        println(t2)
+        println(t3)
+
+
+    }
 }

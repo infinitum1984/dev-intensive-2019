@@ -15,4 +15,16 @@ object Utils {
         val lastName = parts?.get(1)
         return firstName to lastName
     }
+    fun toInitials(name:String?, last_name: String?):String?{
+        val n="${if (name==null) "" else{if (name.isEmpty() || name==" ") "" else name.substring(0,1)}}"
+        val ln="${if (last_name==null) "" else{if (last_name.isEmpty() || last_name==" ") "" else last_name.substring(0,1)}}"
+        val out = n+ln;
+        if (out.isEmpty())
+            return null
+        return out.toUpperCase()
+
+    }
+    fun transliteration(payload:String,devider:String=" "):String{
+        return ""
+    }
 }
