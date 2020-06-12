@@ -1,16 +1,18 @@
 package ru.skillbranch.devintensive.models
 
+import ru.skillbranch.devintensive.models.data.Chat
 import java.util.*
 
-class TextMessage (
-    id:String,
-    from:User?,
-    chat:Chat,
-    isIncome : Boolean = false,
+/**
+ * Created by Makweb on 24.06.2019.
+ */
+class TextMessage(
+    id: String,
+    from: User,
+    chat: Chat,
+    isIncoming: Boolean = false,
     date: Date = Date(),
-    val text:String?
-):BaseMessage(id,from, chat, isIncome, date) {
-    override fun formatMessage(): String {
-        return "$id";
-    }
-}
+    isReaded:Boolean = false,
+    var text: String?
+) : BaseMessage(id, from, chat, isIncoming, date, isReaded)
+
